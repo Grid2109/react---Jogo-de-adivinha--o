@@ -2,6 +2,7 @@ import styles from "./App.module.css";
 import { Header } from "./components/Header";
 import { Tip } from "./components/Tip";
 import { Letter } from "./components/Letter";
+import { Input } from "./components/Input";
 
 export default function App() {
   function handleRestartGame() {
@@ -20,6 +21,10 @@ export default function App() {
           <Letter value="C" />
           <Letter value="T" />
         </div>
+
+        <h4>Palpite</h4>
+
+        <Input autoFocus maxLength={1} placeholder="?"/>
       </main>
     </div>
   );
