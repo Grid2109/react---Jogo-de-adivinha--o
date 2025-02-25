@@ -14,7 +14,8 @@ export function Header({ current, max, onRestart }: Props) {
             <img src={logo} alt="Logo" /> 
 
             <header>
-                <span><strong>{current}</strong> {max}
+                <span>
+                    <strong>{current}</strong> de {max} tentativas
                 </span>
 
                 <button type="button" onClick={onRestart}>
