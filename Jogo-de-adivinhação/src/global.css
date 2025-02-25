@@ -13,7 +13,7 @@ body {
   font-family: "Noto Sans", serif;
 }
 
-input {
+input, button {
   font-family: "Noto Sans", serif;
   outline: none;
 }
