@@ -18,20 +18,40 @@ export default function App() {
   }
 
   function startGame() {
-   const index = Math.floor(Math.random() * WORDS.length);
-   const randomWord = WORDS[index];
-   setChallenge(randomWord);
+    const index = Math.floor(Math.random() * WORDS.length);
+    const randomWord = WORDS[index];
+    setChallenge(randomWord);
 
-   setAttemps(0);
-   setLetter("");
+    setAttemps(0);
+    setLetter("");
+  }
+
+  function handleConfirm() {
+    if (!challenge) {
+      return;
+    }
+
+    if(!letter.trim()) {
+      return alert("Digite uma letra");
+    }
+
+    const value = letter.toUpperCase();
+    const exists = lettersUsed.find((used) => used.value.toUpperCase() === value);
+
+    if (exists) {
+      return alert("Você já utilizou a letra " + value);
+    }
+
+    setLettersUsed((prev) => [...prev, { value, correct:false }])
+    setLetter("");
   }
 
   useEffect(() => {
     startGame();
-  }, [])
+  }, []);
 
-  if(!challenge) {
-    return 
+  if (!challenge) {
+    return;
   }
 
   return (
@@ -40,22 +60,25 @@ export default function App() {
         <Header current={attemps} max={10} onRestart={handleRestartGame} />
         <Tip tip="Uma das linguagens de programação mais utilizadas no mundo" />
         <div className={styles.word}>
-          {
-            challenge.word.split("").map(() => (
-              <Letter value="" />
-            ))
-          }
+          {challenge.word.split("").map(() => (
+            <Letter value="" />
+          ))}
         </div>
 
         <h4>Palpite</h4>
 
         <div className={styles.guess}>
-        <Input autoFocus maxLength={1} placeholder="?"/>
-        <Button title="Confirmar" />
+          <Input
+            autoFocus
+            maxLength={1}
+            placeholder="?"
+            onChange={(e) => setLetter(e.target.value)}
+            value={letter}
+          />
+          <Button title="Confirmar" onClick={handleConfirm} />
         </div>
 
-        <LettersUsed data={lettersUsed}/>
-
+        <LettersUsed data={lettersUsed} />
       </main>
     </div>
   );
