@@ -6,8 +6,8 @@ export function LettersUsed() {
     <div className={styles.lettersUsed}>
       <h5>Letras Utilizadas</h5>
       <div>
-        <Letter value="R"  size="small"/>
-        <Letter value="X"  size="small"/>
+        <Letter value="R"  size="small" color="correct"/>
+        <Letter value="X"  size="small" color="wrong"/>
       </div>
     </div>
   );
