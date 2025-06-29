@@ -5,6 +5,9 @@ Este é um jogo de adivinhação de palavras desenvolvido em React. O jogador de
 <h2>Tecnologias Utilizadas</h2>
 
 - React
+  - Props
+  - useEffect
+  - useState
 
 - TypeScript
 
